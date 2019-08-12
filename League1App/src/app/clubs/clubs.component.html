@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-header">
+    League Clubs List
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>
+                    Name                    
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let item of clubs">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>
+                      <a [routerLink]="[ '/club', item.id ]">Display</a>
+                    </td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>

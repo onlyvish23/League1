@@ -1,0 +1,15 @@
+{
+  "clubs": [
+    { "id": 1, "name": "Arsenal FC", "color": "Red" },
+    { "id": 2, "name": "Chelsea FC", "color": "blue" },
+    { "id": 3, "name": "Liverpool", "color": "red" },
+    { "id": 4, "name": "Manchester United FC", "color": "red" },
+    { "id": 5, "name": "Fulham FC", "color": "white" },
+    { "id": 6, "name": "Tottenham FC", "color": "blue" },
+    { "id": 7, "name": "Crystal Palace FC", "color": "blue" },
+    { "id": 8, "name": "Derby City FC", "color": "white" },
+    { "id": 9, "name": "Manchester City FC", "color": "light-blue" },
+    { "id": 10, "name": "West Ham United FC", "color": "maroon" },
+    { "id": 11, "name": "New Castle United FC", "color": "black" }
+  ]
+}
