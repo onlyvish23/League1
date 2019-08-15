@@ -1,14 +1,45 @@
-<nav class='navbar navbar-expand' style="background-color:#ffd230">
-	<a class='navbar-brand'><strong>{{title}}</strong></a>
-	<ul class='nav nav-pills'>
-		<li><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a></li>
-		<li><a class='nav-link' routerLinkActive='active' [routerLink]="['/clubs']">Clubs</a></li>
-		<li><a class='nav-link' routerLinkActive='active' [routerLink]="['/players']">Players</a></li>
-	</ul>
-	<div class="pull-right">
-		<a [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
-	</div>
+<nav class="navbar navbar-expand" style="background-color:#ffd230">
+  <a class="navbar-brand"
+    ><strong>{{ title }}</strong></a
+  >
+  <ul class="nav nav-pills mr-auto">
+    <li>
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['/welcome']"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['/clubs']"
+        >Clubs</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['/players']"
+        >Players</a
+      >
+    </li>
+  </ul>
+  <div class="pull-right">
+    <a
+      [routerLink]="['/login']"
+      *ngIf="!authservice.userloggedin()"
+      class="btn btn-outline-alert"
+      routerLinkActive="active"
+      ><strong>
+        Login
+      </strong>
+    </a>
+    <a
+      [routerLink]="['/login']"
+      *ngIf="authservice.userloggedin()"
+      (click)="logout()"
+      routerLinkActive="active"
+      class="btn btn-outline-success"
+      >Logout</a
+    >
+  </div>
 </nav>
-<div class='container'>
-<router-outlet></router-outlet>
+
+<div class="container">
+  <router-outlet></router-outlet>
 </div>

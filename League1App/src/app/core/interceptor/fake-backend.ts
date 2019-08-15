@@ -9,7 +9,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     constructor() { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const testUser = { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
+        const testUser = { id: 1, username: 'test', password: 'test', firstName: 'Test',
+         lastName: 'User', token: null };
 
         // wrap in delayed observable to simulate server api call
         return of(null).pipe(mergeMap(() => {
@@ -22,7 +23,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         id: testUser.id,
                         username: testUser.username,
                         firstName: testUser.firstName,
-                        lastName: testUser.lastName
+                        lastName: testUser.lastName,
+                        token : 'fake-token'
                     };
                     return of(new HttpResponse({ status: 200, body }));
                 } else {
