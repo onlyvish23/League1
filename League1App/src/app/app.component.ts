@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  title: 'League';
   constructor(private authservice: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+      console.log('App component');
   }
+
+  userloggedin() {
+    return this.authservice.userloggedin();
+  }
+
   logout() {
     this.authservice.logout();
     this.router.navigate(['login']);

@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './core/guards/auth-guard';
 import { ErrorInterceptor } from './core/interceptor/error-interceptor';
 import { JwtInterceptor } from './core/interceptor/jwt-interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { JwtInterceptor } from './core/interceptor/jwt-interceptor';
     ClubsComponent,
     WelcomeComponent,
     LoginComponent,
-    PlayersComponent
+    PlayersComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

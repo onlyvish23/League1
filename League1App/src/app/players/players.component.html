@@ -1,3 +1,22 @@
 <div class="alert alert-primary" role="alert">
   Player info page in progress.
 </div>
+
+<div class="row">
+  <ng-container *ngFor="let item of players;let i=index">
+    <div class="col-md-3 mt-2">
+      <div class="card">
+        <div class="card-header">
+          <h5>{{ item.firstName + " " + item.lastName }}</h5>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ item.clubName }}</h4>
+          <strong class="card-text">{{item.country +", "+item.age }}</strong>
+        </div>
+        <div class="card-footer text-muted">Footer : {{ i+1 }}</div>
+      </div>
+    </div>
+  </ng-container>
+
+  
+</div>

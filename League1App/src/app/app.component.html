@@ -1,42 +1,33 @@
 <nav class="navbar navbar-expand" style="background-color:#ffd230">
-  <a class="navbar-brand"
-    ><strong>{{ title }}</strong></a
-  >
-  <ul class="nav nav-pills mr-auto">
-    <li>
-      <a class="nav-link" routerLinkActive="active" [routerLink]="['/welcome']"
-        >Home</a
-      >
-    </li>
-    <li>
-      <a class="nav-link" routerLinkActive="active" [routerLink]="['/clubs']"
-        >Clubs</a
-      >
-    </li>
-    <li>
-      <a class="nav-link" routerLinkActive="active" [routerLink]="['/players']"
-        >Players</a
-      >
-    </li>
-  </ul>
+  <a class="navbar-brand"><strong>{{ title }}</strong></a>
+  <ng-container *ngIf="userloggedin()">  
+    <ul class="nav nav-pills mr-auto">
+      <li>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/welcome']">Home</a>
+      </li>
+      <li>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/clubs']">Clubs</a>
+      </li>
+      <li>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/players']">Players</a>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-container *ngIf="!userloggedin()">  
+      <ul class="nav nav-pills mr-auto">
+          <li>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/welcome']">Home</a>
+          </li>
+      </ul>
+  </ng-container>
+
   <div class="pull-right">
-    <a
-      [routerLink]="['/login']"
-      *ngIf="!authservice.userloggedin()"
-      class="btn btn-outline-alert"
-      routerLinkActive="active"
-      ><strong>
-        Login
-      </strong>
+    <a [routerLink]="['/login']" *ngIf="!userloggedin()" class="btn btn-outline-alert" routerLinkActive="active">
+      <strong>Login</strong>
     </a>
-    <a
-      [routerLink]="['/login']"
-      *ngIf="authservice.userloggedin()"
-      (click)="logout()"
-      routerLinkActive="active"
-      class="btn btn-outline-success"
-      >Logout</a
-    >
+    <a [routerLink]="['/login']" *ngIf="userloggedin()" (click)="logout()" 
+    routerLinkActive="active" class="btn btn-light btn-outline-success">Logout</a>
   </div>
 </nav>
 
