@@ -14,6 +14,8 @@ import { AuthGuard } from './core/guards/auth-guard';
 import { ErrorInterceptor } from './core/interceptor/error-interceptor';
 import { JwtInterceptor } from './core/interceptor/jwt-interceptor';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     WelcomeComponent,
     LoginComponent,
     PlayersComponent,
-    DashboardComponent
+    DashboardComponent,
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [
     AuthGuard,
