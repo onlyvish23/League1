@@ -9,13 +9,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { PlayersComponent } from './players/players.component';
 import { fakeBackendProvider } from './core/interceptor/fake-backend';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormsModule } from '@angular/forms';
 import { AuthGuard } from './core/guards/auth-guard';
 import { ErrorInterceptor } from './core/interceptor/error-interceptor';
 import { JwtInterceptor } from './core/interceptor/jwt-interceptor';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MusicSearchComponent } from './music-search/music-search.component';
+
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     LoginComponent,
     PlayersComponent,
     DashboardComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    MusicSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     ScrollingModule

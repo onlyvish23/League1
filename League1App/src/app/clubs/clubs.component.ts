@@ -12,12 +12,24 @@ export class ClubsComponent implements OnInit {
   constructor(private clubsservice: ClubsService) { }
 
   ngOnInit() {
-    this.loaddata();
+    this.loaddata_promise();
   }
 
+  // Method using Observables
   loaddata() {
-    this.clubsservice.getclubs().subscribe(data => {
-      this.clubs = data  as Club[];
+    this.clubsservice.getclubs().subscribe((data: any) => {
+      if (data !== undefined && data.clubs !== undefined) {
+       this.clubs = data.clubs  as Club[];
+      }
+    });
+  }
+
+  //Method using Promises
+  loaddata_promise() {
+    this.clubsservice.getclubs_promise().then((data: any) => {
+      if (data !== undefined && data.clubs !== undefined) {
+       this.clubs = data.clubs  as Club[];
+      }
     });
   }
 

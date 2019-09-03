@@ -8,6 +8,8 @@ import {Pokemon} from '../entities/pokemon';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  private pokemon: Pokemon[] = [];
+  private loading = false;
 
   scrollItems: number[] = [];
   constructor(private pokemonService: PokemonListService) {
@@ -16,17 +18,23 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  pokemon: Pokemon[];
-
   ngOnInit(): void {
     this.initialize();
   }
 
   initialize(): void {
-    this.pokemonService.list()
-    .then((pokemon) => {
-      this.pokemon = pokemon;
-    });
+      this.pokemonService.getPokemons()
+      .subscribe((res: any) => {
+        //console.log('Comp JSON: ', JSON.stringify(res));
+        if (res !== undefined && res.pokemon_entries !== undefined) {
+          res.pokemon_entries.forEach((item) => {
+          const p = new Pokemon();
+          p.id = item.entry_number;
+          p.name = item.pokemon_species.name;
+          this.pokemon.push(p);
+        });
+      }
+      });
   }
 
 }

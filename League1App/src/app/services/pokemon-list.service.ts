@@ -1,47 +1,41 @@
 import { Injectable } from '@angular/core';
-//import 'rxjs/add/operator/toPromise';
-//import 'rxjs/operator/toPromise';
-import {HttpHeaders, HttpClient } from '@angular/common/http';
+// import 'rxjs/operator/toPromise';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Pokemon } from '../entities/pokemon';
-
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonListService {
-pokeurl: 'https://pokeapi.co/api/v2/pokedex/2/';
+  // private pokeurl: 'https://pokeapi.co/api/v2/pokedex/2/';
+  //private pokeurl = 'http://localhost:3000/testdata/pokemons/pokemon_entries';
+  private pokeurl = '../../assets/pokemons.json';
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-// private handleError(error: any) {
-//     let errMsg: string;
-//     if (error instanceof Response) {
-//       const body = error.json() || '';
-//       const err =  JSON.stringify(body);
-//       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-//     } else {
-//       errMsg = error.message ? error.message : error.toString();
-//     }
-//     console.error(errMsg);
-//     return Promise.reject(errMsg);
-//   }
+  getPokemons(): Observable<any[]> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(this.pokeurl, {headers })
+      .pipe(
+        map((res: any) => {
+          console.log('JSON Data: ', JSON.stringify(res));
+          return res;
+        }),
+        catchError(this.handleError));
+  }
 
-list() {
-  const headers = new HttpHeaders();
-  headers.append('Content-Type', 'application/json');
-  return this.http.get(this.pokeurl, {headers})
-            .toPromise()
-            .then((res: any) => {
-                const data = res.json();
-                const allPokemon = [];
-                data.pokemon_entries.forEach((entry) => {
-                  const pokemon = new Pokemon();
-                  pokemon.name = entry.pokemon_species.name;
-                  pokemon.id = entry.entry_number;
-                  allPokemon.push(pokemon);
-                });
-                return allPokemon;
-            })
-            .catch(null);
-    } // End oflist
+  private handleError(errorResponse: HttpErrorResponse) {
+      if (errorResponse.error instanceof ErrorEvent) {
+          console.error('Client side error: ', errorResponse.error.message);
+        } else {
+          console.error('Server side error: ', errorResponse);
+        }
+      return throwError('Error in service call');
+  }
 
+  list() {
+    return this.http.get(this.pokeurl);
+  }
 }

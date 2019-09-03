@@ -7,8 +7,8 @@ import {tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClubsService {
-  dataurl = 'http://localhost:3000/clubs';
-  //dataurl = 'testdata/db.json';
+  // dataurl = 'http://localhost:3000/clubs';
+  private dataurl = '../../assets/db.json';
   constructor(private http: HttpClient) {}
 
   getclubs(): Observable<Club[]> {
@@ -16,6 +16,21 @@ export class ClubsService {
       tap(data => console.log(JSON.stringify(data)))
     );
     return response;
+  }
+
+  getclubs_promise() {
+    const promise = new Promise((resolve, reject) => {
+        this.http.get(this.dataurl)
+          .toPromise()
+          .then(res => {
+            //console.log(JSON.stringify(res));
+            resolve(res);
+          })
+          .catch(error => {
+            reject(error);
+          });
+    });
+    return promise;
   }
 }
 
