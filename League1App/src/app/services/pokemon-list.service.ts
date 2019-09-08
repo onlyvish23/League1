@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class PokemonListService {
   // private pokeurl: 'https://pokeapi.co/api/v2/pokedex/2/';
-  //private pokeurl = 'http://localhost:3000/testdata/pokemons/pokemon_entries';
+  // private pokeurl = 'http://localhost:3000/testdata/pokemons/pokemon_entries';
   private pokeurl = '../../assets/pokemons.json';
 
   constructor(private http: HttpClient) { }

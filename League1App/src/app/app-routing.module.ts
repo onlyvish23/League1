@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './core/guards/auth-guard';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { MusicSearchComponent } from './music-search/music-search.component';
+import { ClubComponent } from './clubs/club/club.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'players', component: PlayersComponent},
   {path: 'pokemons', component: PokemonListComponent},
   {path: 'musicsearch', component: MusicSearchComponent},
+  {path: 'addclub', component: ClubComponent},
   {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
 ];
 

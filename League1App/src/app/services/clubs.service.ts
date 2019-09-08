@@ -7,7 +7,6 @@ import {tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClubsService {
-  // dataurl = 'http://localhost:3000/clubs';
   private dataurl = '../../assets/db.json';
   constructor(private http: HttpClient) {}
 
@@ -23,7 +22,6 @@ export class ClubsService {
         this.http.get(this.dataurl)
           .toPromise()
           .then(res => {
-            //console.log(JSON.stringify(res));
             resolve(res);
           })
           .catch(error => {

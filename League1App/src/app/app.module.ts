@@ -17,6 +17,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MusicSearchComponent } from './music-search/music-search.component';
+import { ClubComponent } from './clubs/club/club.component';
+import {CalendarModule} from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -28,15 +32,19 @@ import { MusicSearchComponent } from './music-search/music-search.component';
     PlayersComponent,
     DashboardComponent,
     PokemonListComponent,
-    MusicSearchComponent
+    MusicSearchComponent,
+    ClubComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    BrowserAnimationsModule,
+    CalendarModule
   ],
   providers: [
     AuthGuard,

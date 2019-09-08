@@ -8,7 +8,7 @@ import {Pokemon} from '../entities/pokemon';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  private pokemon: Pokemon[] = [];
+  public pokemon: Pokemon[] = [];
   private loading = false;
 
   scrollItems: number[] = [];

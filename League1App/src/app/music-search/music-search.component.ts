@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormA
   styleUrls: ['./music-search.component.scss']
 })
 export class MusicSearchComponent implements OnInit {
-  private loading = false;
+  public loading = false;
   constructor(private searchMusic: SearchMusicService ) { }
 
   ngOnInit() {

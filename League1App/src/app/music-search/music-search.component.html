@@ -5,7 +5,7 @@
 		       placeholder="Enter search string"
 		       >
 	</div>
-	<button type="button" class="btn btn-primary" (click)="doSearch()">Search</button>
+	<button type="button" class="btn btn-primary" (click)="doSearch('maroon')">Search</button>
 </div>
 
 <hr/>
@@ -14,7 +14,8 @@
   <p class="lead" *ngIf="loading">Loading...</p>
 </div>
 
-<ul class="list-group" *ngIf="itunes.results">
+<!-- Todo below -->
+<!-- <ul class="list-group" *ngIf="itunes.results">
 	<li class="list-group-item"
 	    *ngFor="let track of itunes.results">
 		<img src="{{track.thumbnail}}">
@@ -22,4 +23,4 @@
 		   href="{{track.link}}">{{ track.track }}
 		</a>
 	</li>
-</ul>
+</ul> -->

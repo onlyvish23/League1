@@ -1,0 +1,8 @@
+{
+    "items": [
+        {"id": 1, "type": "MultiSelectDateList", "displayname": "Meta 1", "isactive": true, "sequencenumber": 1, "values" : null
+        },
+        {"id": 2, "type": "MultiSelectDropDown", "displayname": "Meta 2", "isactive": true, "sequencenumber": 2, "values" : null
+        }
+    ]
+}
